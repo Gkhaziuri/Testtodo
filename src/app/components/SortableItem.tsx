@@ -27,21 +27,21 @@ const SortableItem: React.FC<SortableItemProps> = ({ id, text, onDelete }) => {
   };
 
   return (
-    <li className={styles.mainButton} >
-    <li
-      ref={setNodeRef}
-      style={style}
-      {...attributes}
-      {...listeners}
-      className={`${styles.listItem} ${isDragging ? styles.listItemDragging : ''}`}
-    >
-      <span>{text}</span> 
-    </li>
-      <button
-      onClick={() => onDelete(id)}
-      className={styles.deleteButton}
+    <li className={styles.mainButton}>
+      <li
+        ref={setNodeRef}
+        style={style}
+        {...attributes}
+        {...listeners}
+        className={`${styles.listItem} ${isDragging ? styles.listItemDragging : ''}`}
       >
-      X
+        <span>{text}</span> 
+      </li>
+      <button
+        onClick={() => onDelete(id)}
+        className={styles.deleteButton}
+      >
+        X
       </button>
     </li>
   );

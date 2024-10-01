@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -8,6 +7,7 @@ import {
   PointerSensor,
   useSensor,
   useSensors,
+  DragEndEvent,
 } from '@dnd-kit/core';
 import {
   arrayMove,
@@ -25,7 +25,7 @@ interface Todo {
 const SortableTodoList: React.FC = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [input, setInput] = useState('');
-console.log(todos)
+  console.log(todos)
   
   useEffect(() => {
     const storedTodos = localStorage.getItem('todos');
@@ -43,10 +43,10 @@ console.log(todos)
     useSensor(PointerSensor)
   );
 
-  const handleDragEnd = (event: any) => {
+  const handleDragEnd = (event: DragEndEvent) => { 
     const { active, over } = event;
 
-    if (active.id !== over.id) {
+    if (over && active.id !== over.id) { 
       setTodos((items) => {
         const oldIndex = items.findIndex(item => item.id === active.id);
         const newIndex = items.findIndex(item => item.id === over.id);
@@ -60,7 +60,7 @@ console.log(todos)
     if (input.trim() === '') { 
       alert("Please write something!");  
       return;  
-  }
+    }
     const newTodo: Todo = { id: Date.now().toString(), text: input };
     setTodos([...todos, newTodo]);
     setInput('');
@@ -81,7 +81,7 @@ console.log(todos)
     if (todos.length === 0) {
       alert("Please add a task first!");  
       return;  
-  }
+    }
     const fileData = JSON.stringify(todos, null, 2); 
     const blob = new Blob([fileData], { type: 'application/json' });
     const url = URL.createObjectURL(blob); 
@@ -107,7 +107,7 @@ console.log(todos)
   return (
     <div className={styles.container}>
       <div className={styles.tittleBox}>
-      <h2 className={styles.title}>To-Do App</h2>
+        <h2 className={styles.title}>To-Do App</h2>
       </div>
       <div className={styles.inputContainer}>
         <input
@@ -147,7 +147,7 @@ console.log(todos)
         Download Tasks
       </button>
       <button onClick={handleDeleteAll} className={styles.deleteAllButton}>
-          Delete All
+        Delete All
       </button>
     </div>
   );
