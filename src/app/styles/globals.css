@@ -1,0 +1,22 @@
+/* global styles */
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+  background-color: #787676;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+main {
+  min-height: 100vh;
+  padding: 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
