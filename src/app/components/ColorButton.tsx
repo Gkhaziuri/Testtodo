@@ -1,0 +1,65 @@
+'use client';
+
+import React, { useState } from 'react';
+import SortableTodoList from './SortableTodoList';
+import styles from './../styles/ColorButton.module.css';
+
+
+const ColorButton: React.FC = () => {
+  const [selectedColors, setSelectedColors] = useState<string[]>([]);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [openContainers, setOpenContainers] = useState<string[]>([]); 
+
+  
+  const colors = ['#1f2937', '#770303', '#696565'];
+
+  const toggleDropdown = () => setDropdownOpen(prev => !prev);
+
+  const selectColor = (color: string) => {
+    if (!selectedColors.includes(color)) {
+      setSelectedColors([...selectedColors, color]);
+      setOpenContainers([...openContainers, color]); 
+    }
+    setDropdownOpen(false);
+  };
+
+  const removeColor = (color: string) => {
+    setSelectedColors(selectedColors.filter(c => c !== color));
+    setOpenContainers(openContainers.filter(c => c !== color));
+  };
+
+  return (
+    <div style={{ position: 'relative' }}>
+      <button className={styles.ColorButton} onClick={toggleDropdown}>
+        +
+      </button>
+      {dropdownOpen && (
+        <div className={styles.dropdown}>
+          {colors.map(color => (
+            <div
+              key={color}
+              className={styles.colorOption}
+              onClick={() => selectColor(color)}
+              style={{
+                backgroundColor: color,
+                borderRadius: '50%', 
+                width: '30px', 
+                height: '30px', 
+                margin: '5px', 
+              }}
+            />
+          ))}
+        </div>
+      )}
+      {openContainers.map(color => (
+        <div key={color} className={styles.containerWrapper}>
+          <SortableTodoList containerColor={color} onClose={() => removeColor(color)} />
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default ColorButton;
+
+           

@@ -1,3 +1,6 @@
+.BodyContainer {
+  padding: 50px
+}
 
 .container {
     padding: 20px;
@@ -6,32 +9,39 @@
     background-color: #fff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    background-color: #1f2937;
-  }
-  
-  .title {
+}
+.title {
     text-align: center;
-    color: #0070f3;
+    color: #ffff;
     margin-bottom: 20px;
     font-family: sans-serif;
-  }
-  .tittleBox {
-    background-color: #1f2937;
+}
+.tittleBox {
     width: 100%;
-  }
-  .inputContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+.closeButton {
+  border: none;
+  background-color: #ffff;
+  max-height: 40px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.inputContainer {
     display: flex;
     margin-bottom: 20px;
-  }
-  
-  .input {
+} 
+.input {
     flex: 1;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-  }
-  
-  .button {
+}
+.button {
     padding: 10px;
     margin-left: 10px;
     background-color: #0070f3;
@@ -40,23 +50,21 @@
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.5s ease;
-  }
-  
-  .button:hover {
+}
+.button:hover {
     background-color: #005bb5;
-  }
-  .mainButton{
+}
+.mainButton{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-  }
-  .list {
+}
+.list {
     list-style: none;
     padding: 0;
-  }
-  
-  .listItem {
+}
+.listItem {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -68,13 +76,11 @@
     margin-top: 5px;
     border-radius: 4px;
     font-family: sans-serif;
-  }
-  
-  .listItemDragging {
+} 
+.listItemDragging {
     background-color: #b2b4b5;
-  }
-  
-  .deleteButton {
+} 
+.deleteButton {
     background: #0070f3;
     border: none;
     color: #fff;
@@ -85,7 +91,7 @@
     border-radius: 4px;
     font-family: sans-serif;
   }
-  .downloadButton {
+.downloadButton {
     margin-top: 20px;
     padding: 10px 20px;
     background-color: #4CAF50;
@@ -93,14 +99,14 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-  }
+}
   
-  .downloadButton:hover {
+.downloadButton:hover {
     background-color: #327035;
     transition: background-color 0.5s ease;
 
-  }
-  .deleteAllButton {
+}
+.deleteAllButton {
     background-color: rgb(221, 4, 4);
     color: white;
     padding: 10px;
@@ -109,9 +115,21 @@
     cursor: pointer;
     margin-left: 10px;
     font-family: sans-serif;
-  }
+}
   
-  .deleteAllButton:hover {
+.deleteAllButton:hover {
     background-color: darkred;
     transition: background-color 0.4s ease;
-  }
+}
+.dropdown {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+.dropdown button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
